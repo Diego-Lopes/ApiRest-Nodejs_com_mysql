@@ -1,6 +1,6 @@
 # Desafio 2
 
-API REST - Gerenciamento de Unidades Federativas e Municípios .
+API REST - Gerenciamento de Unidades Federativas, Estaduais e Municipais.
 
 > **DISCLAMER** :warning: Neste projeto foi utilizado como banco de dados o MySQL, MySQL Workbenc para gerenciar.
 
