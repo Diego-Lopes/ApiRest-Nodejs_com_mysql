@@ -226,4 +226,5 @@ Estado, municipio tem CRUD, eles tem aplicado no body da requisição, uma url i
 ## Modelo da Banco de Dados
 
 Modelo das tabelas do Banco de Dados.
-![Modelo do Banco de Dados]<img href="/img/diagramabd.png"/>
+![Modelo do Banco de Dados]
+<img href="./img/diagramabd.png"></img>
