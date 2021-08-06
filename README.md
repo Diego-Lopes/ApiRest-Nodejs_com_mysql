@@ -47,7 +47,7 @@ npm start
 
 ```
 
-não se preocupe caso tenha yarn instalado utilizei o nodemon para que possa ficar escutando quando teclar para salva, o nodemon vai fazer o restart automático.
+não se preocupe com servidor no modo yarn utilizei o nodemon para que possa ficar escutando quando teclar para salva, o nodemon vai fazer o restart automático.
 
 # Usando a API
 
