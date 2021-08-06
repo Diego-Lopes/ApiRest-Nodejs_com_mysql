@@ -4,9 +4,9 @@ API REST - Gerenciamento de Unidades Federativas, Estaduais e Municipais.
 
 > **DISCLAMER** :warning: Neste projeto foi utilizado como banco de dados o MySQL, MySQL Workbenc para gerenciar.
 
-O projeto foi construido utilizando **NodeJs**. Também foram utilizadas algumas bibliotecas: Express, Cors, mysql2, Bcrypt, body-parser,nodemon.
+O projeto foi construido utilizando **NodeJs**. Também foram utilizadas algumas bibliotecas: Express, Cors, mysql2, Bcrypt, body-parser, nodemon.
 
-> Para conseguir execultar o projeto será necessario ter o **NodeJs** instalado, na versão **v14.15.0**.
+> Para conseguir execultar o projeto será necessario ter o **NodeJs** instalado, na versão **MAIS ATUAL**.
 
 # Configurações iniciais
 
@@ -23,15 +23,18 @@ yarn
 
 ## Configurando conexão com o Banco de Dados
 
-Para aplicação foi utilizado o **MySQL**, suponhamos que já tem instalado, e configurado a rota 3306, localhost senha root e também ja tenha criado as tabela: pais com id automático, nome, sigla, tabela: estado, id automático, nome, uf, fk_id_pais, tabela: municipio, id automático, nome, população e fk_id_estado, caso não, terá um imagem da lógica do bd logo abaixo e recria para continuar.
+Para aplicação foi utilizado o **MySQL**, suponhamos que já tem instalado, e configurado a rota 3306, localhost usuário e senha root e também ja tenha criado as tabela: pais com id automático, nome, sigla, tabela: estado, id automático, nome, uf, fk_id_pais, tabela: municipio, id automático, nome, população e fk_id_estado, tabela municipio: nome, população, fk_id_estado caso não, terá um imagem da lógica do bd logo abaixo e recria para continuar.
 
 Na pasta raiz do projeto podemos encontrar um arquivo `nodemon.json`. Onde está guardada as informações de conexão.
 
 ```js
-const port = process.env.PORT || 3000
-const server = http.createServer(app)
-console.log('servidor online')
-server.listen(port)
+"env": {
+  "MYSQL_USER":"root",
+  "MYSQL_PASSWORD":"root", 
+  "MYSQL_DATABASE":"mydb",
+  "MYSQL_HOST": "localhost",
+  "MYSQL_PORT": 3306
+  }  
 ```
 
 ## Criando uma Build
