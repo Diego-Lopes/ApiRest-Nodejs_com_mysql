@@ -174,7 +174,7 @@ Você pode acessar a rota: **[/pais](http://localhost:3000/pais)** (`/pais + um 
 
 Você pode acessar a rota: **[/estado](http://localhost:3000/estado)**, utilizando como método de requisição o **POST**.
 
-Será necessário passar no corpo da requisição os seguintes dados:
+Será necessário o id do pais de vinculo no corpo da requisição:
 
 ```json
 {
