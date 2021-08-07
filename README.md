@@ -1,12 +1,12 @@
 # Desafio 2
 
-API REST - Gerenciamento de Unidades Federativas e Municípios .
+API REST - Gerenciamento de Unidades Federativas, Estaduais e Municipais.
 
 > **DISCLAMER** :warning: Neste projeto foi utilizado como banco de dados o MySQL, MySQL Workbenc para gerenciar.
 
-O projeto foi construido utilizando **NodeJs**. Também foram utilizadas algumas bibliotecas: Express, Cors, mysql2, Bcrypt, body-parser,nodemon.
+O projeto foi construido utilizando **NodeJs**. Também foram utilizadas algumas bibliotecas: Express, Cors, mysql2, Bcrypt, body-parser, nodemon.
 
-> Para conseguir execultar o projeto será necessario ter o **NodeJs** instalado, na versão **v14.15.0**.
+> Para conseguir execultar o projeto será necessario ter o **NodeJs** instalado, na versão **MAIS ATUAL**.
 
 # Configurações iniciais
 
@@ -23,15 +23,18 @@ yarn
 
 ## Configurando conexão com o Banco de Dados
 
-Para aplicação foi utilizado o **MySQL**, suponhamos que já tem instalado, e configurado a rota 3306, localhost senha root e também ja tenha criado as tabela: pais com id automático, nome, sigla, tabela: estado, id automático, nome, uf, fk_id_pais, tabela: municipio, id automático, nome, população e fk_id_estado, caso não, terá um imagem da lógica do bd logo abaixo e recria para continuar.
+Para aplicação foi utilizado o **MySQL**, suponhamos que já tem instalado, e configurado a rota 3306, localhost usuário e senha root e também ja tenha criado as tabela: pais com id automático, nome, sigla, tabela: estado, id automático, nome, uf, fk_id_pais, tabela: municipio, id automático, nome, população e fk_id_estado, tabela municipio: nome, população, fk_id_estado caso não, terá um imagem da lógica do bd logo abaixo e recria para continuar.
 
 Na pasta raiz do projeto podemos encontrar um arquivo `nodemon.json`. Onde está guardada as informações de conexão.
 
 ```js
-const port = process.env.PORT || 3000
-const server = http.createServer(app)
-console.log('servidor online')
-server.listen(port)
+"env": {
+  "MYSQL_USER":"root",
+  "MYSQL_PASSWORD":"root", 
+  "MYSQL_DATABASE":"mydb",
+  "MYSQL_HOST": "localhost",
+  "MYSQL_PORT": 3306
+  }  
 ```
 
 ## Criando uma Build
@@ -47,7 +50,7 @@ npm start
 
 ```
 
-não se preocupe caso tenha yarn instalado utilizei o nodemon para que possa ficar escutando quando teclar para salva, o nodemon vai fazer o restart automático.
+não se preocupe com servidor no modo yarn utilizei o nodemon para que possa ficar escutando quando teclar para salva, o nodemon vai fazer o restart automático.
 
 # Usando a API
 
@@ -174,7 +177,7 @@ Você pode acessar a rota: **[/pais](http://localhost:3000/pais)** (`/pais + um 
 
 Você pode acessar a rota: **[/estado](http://localhost:3000/estado)**, utilizando como método de requisição o **POST**.
 
-Será necessário passar no corpo da requisição os seguintes dados:
+Será necessário o id do pais de vinculo no corpo da requisição:
 
 ```json
 {
@@ -226,4 +229,5 @@ Estado, municipio tem CRUD, eles tem aplicado no body da requisição, uma url i
 ## Modelo da Banco de Dados
 
 Modelo das tabelas do Banco de Dados.
-![Modelo do Banco de Dados](./img/diagramadb.png)
+![Modelo do Banco de Dados]
+<img src="./img/diagramabd.png"></img>
