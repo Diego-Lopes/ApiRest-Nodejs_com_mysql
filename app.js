@@ -3,9 +3,9 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-const routersPais = require('./routes/pais')
-const routersEstados = require('./routes/estados')
-const routersMunicipios = require('./routes/municipio')
+const routersPais = require('./src/routes/pais')
+const routersEstados = require('./src/routes/estados')
+const routersMunicipios = require('./src/routes/municipio')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false })) //apenas dados simples
