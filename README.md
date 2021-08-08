@@ -104,7 +104,9 @@ resposta da api será
 exibindo o token pega esse token e insira no auth modo Bearer Token, lembrando configurei o token para 1h de duração você pode mudar ao tempo que quiser no arquivo usuários const token.
 ```
 
-##Rotas com autenticação são, **POST, DELETE, PATCH** rota get deixei pública. 
+## Rotas com autenticação são, **POST, DELETE, PATCH** rota get deixei pública. 
+
+
 ## Estado
 
 É possivel listar, criar, atualizar e deletar as intâncias de estado.
