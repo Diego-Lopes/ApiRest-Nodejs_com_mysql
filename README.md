@@ -2,7 +2,7 @@
 
 API REST - Gerenciamento de Unidades Federativas, Estaduais e Municipais.
 
-> **DISCLAMER** :warning: Neste projeto foi utilizado como banco de dados o MySQL, MySQL Workbenc para gerenciar.
+> **DISCLAMER** :warning: Neste projeto foi utilizado como banco de dados o MySQL, MySQL Workbenc para gerenciar e tratativa de erros..
 
 O projeto foi construido utilizando **NodeJs**. Também foram utilizadas algumas bibliotecas: Express, Cors, mysql2, Bcrypt, body-parser, nodemon.
 
@@ -37,7 +37,7 @@ Na pasta raiz do projeto podemos encontrar um arquivo `nodemon.json`. Onde está
   }  
 ```
 
-## Criando uma Build
+## Criando uma Build ou mod Dev
 
 Basta executar o comando abaixo que será gerada iniciar a api
 
@@ -60,8 +60,51 @@ Ao iniciar a aplicação ela estara disponível na porta **3000**. Você pode ac
 
 ## Criando uma conta
 
-Ainda vou implementar
+Para criar sua conta tenha criado no banco de dados tabela usuários com seguintes campos, id_usuario incrementação automática e key primary, email varchar(100) 
+e ative como campo único, o próprio bd será responsável de validar isso., senha varchar(100) e ambos não pode ser null.
+na rota **[/cadastro](http://localhost:3000/usuarios)**
+```js
+{
+  "email":"emailteste12@teste6.com",
+	"senha":"123456"
+}
+```
+o retorno será 
+```js
+{
+  "mensagem": "Usuario cadastrado com secesso",
+  "usuarioCriado": {
+    "id_usuario": 8,
+    "email": "emailteste12@teste6.com"
+  }
+}
+```
+caso force cadastrar novamente receberá essa mensagem.
+```js
+{
+  "mensagem": "Usuário já cadastrado 🚫"
+}
+```
 
+## Fazendo Login 
+Para fazer o login vá na rota **[/login](http://localhost:3000/usuarios)** faça o login preenchendo os campos email e senha
+
+```js
+{
+  "email":"emailteste5@teste6.com",
+	"senha":"123456"
+}
+```
+resposta da api será 
+```js
+{
+  "mensagem": "Autenticado com sucesso 🔓",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo4LCJlbWFpbCI6ImVtYWlsdGVzdGUxMkB0ZXN0ZTYuY29tIiwiaWF0IjoxNjI4NDYzNjk4LCJleHAiOjE2Mjg0NjcyOTh9.Ylpc7rBOjrKlSYDl66c31rlus3pDSQfCcgfIaJDtZvc"
+}
+exibindo o token pega esse token e insira no auth modo Bearer Token, lembrando configurei o token para 1h de duração você pode mudar ao tempo que quiser no arquivo usuários const token.
+```
+
+##Rotas com autenticação são, **POST, DELETE, PATCH** rota get deixei pública. 
 ## Estado
 
 É possivel listar, criar, atualizar e deletar as intâncias de estado.
