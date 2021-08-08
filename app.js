@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const routersPais = require('./src/routes/pais')
 const routersEstados = require('./src/routes/estados')
 const routersMunicipios = require('./src/routes/municipio')
+const routersUsers = require('./src/routes/usuarios')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false })) //apenas dados simples
@@ -14,6 +15,7 @@ app.use(bodyParser.json()) //aceita somente formato json.
 app.use('/pais', routersPais)
 app.use('/estado', routersEstados)
 app.use('/municipio', routersMunicipios)
+app.use('/usuarios', routersUsers)
 
 //informações do babeçalho
 app.use((req, res, next) => {

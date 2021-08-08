@@ -1,6 +1,7 @@
 const express = require('express')
 const mysql = require('../mysql/mysql').pool
 const estado = express.Router()
+const login = require('../middleware/login')
 
 //retorna todos os estados
 estado.get('/', (req, res, next) => {
@@ -34,7 +35,7 @@ estado.get('/', (req, res, next) => {
 })
 
 //insere um estado
-estado.post('/', (req, res, next) => {
+estado.post('/', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -61,7 +62,7 @@ estado.post('/', (req, res, next) => {
 })
 
 //retorna o dado de um estado.
-estado.get('/:id', (req, res, next) => {
+estado.get('/:id', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -80,7 +81,7 @@ estado.get('/:id', (req, res, next) => {
 })
 
 //altera um estado
-estado.patch('/', (req, res, next) => {
+estado.patch('/', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -94,17 +95,19 @@ estado.patch('/', (req, res, next) => {
 
         if (error) {
           return res.status(500).send({ error: error })
-        }
-        res.status(202).send({
-          mensagem: 'Objeto alterado com sucesso! 🌩'
-        })
+        } else if (result.affectedRows == 0) {
+          return res.status(404).send({ mensagem: 'objeto não existe. 💥' })
+        } else
+          res.status(202).send({
+            mensagem: 'Objeto alterado com sucesso! 🌩'
+          })
       }
     )
   })
 })
 
 //deleta um estado
-estado.delete('/', (req, res, next) => {
+estado.delete('/', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -118,10 +121,12 @@ estado.delete('/', (req, res, next) => {
 
         if (error) {
           return res.status(500).send({ error: error })
-        }
-        res.status(202).send({
-          mensagem: 'Objeto removido com sucesso! ❌'
-        })
+        } else if (result.affectedRows == 0) {
+          return res.status(404).send({ mensagem: 'objeto já excluído. 💥' })
+        } else
+          res.status(202).send({
+            mensagem: 'Objeto removido com sucesso! ❌'
+          })
       }
     )
   })

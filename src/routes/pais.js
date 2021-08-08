@@ -2,6 +2,7 @@ const express = require('express')
 
 const pais = express.Router()
 const mysql = require('../mysql/mysql').pool
+const login = require('../middleware/login')
 
 //retorna todos os paises
 pais.get('/', (req, res, next) => {
@@ -34,28 +35,29 @@ pais.get('/', (req, res, next) => {
 })
 
 //insere um pais
-pais.post('/', (req, res, next) => {
+pais.post('/', login, (req, res, next) => {
   //fazendo insert
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
     }
     conn.query(
-      'INSERT INTO pais (nome, sigla) VALUES (? , ?)',
+      'INSERT INTO pais (nome, sigla) VALUES (?,?)',
       [req.body.nome, req.body.sigla],
       (error, result, field) => {
         //callback
         conn.release()
+        console.log(result)
+        if (error) {
+          return res.status(500).send({ error: error })
+        }
         const response = {
           mensagem: 'Pais cadastrado com sucesso 🆗',
           paisCadastrado: {
-            id: result.id,
+            id: result.insertId,
             nome: req.body.nome,
             sigla: req.body.sigla
           }
-        }
-        if (error) {
-          return res.status(500).send({ error: error })
         }
         res.status(201).send(response)
       }
@@ -64,7 +66,7 @@ pais.post('/', (req, res, next) => {
 })
 
 //retorna o dado de um pais específico.
-pais.get('/:id', (req, res, next) => {
+pais.get('/:id', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -84,7 +86,7 @@ pais.get('/:id', (req, res, next) => {
 })
 
 //altera um pais
-pais.patch('/', (req, res, next) => {
+pais.patch('/', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -108,7 +110,7 @@ pais.patch('/', (req, res, next) => {
 })
 
 //deleta um pais
-pais.delete('/', (req, res, next) => {
+pais.delete('/', login, (req, res, next) => {
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ error: error })
@@ -122,10 +124,12 @@ pais.delete('/', (req, res, next) => {
 
         if (error) {
           return res.status(500).send({ error: error })
-        }
-        res.status(202).send({
-          mensagem: 'Objeto removido com sucesso! ❌'
-        })
+        } else if (result.affectedRows == 0) {
+          return res.status(404).send({ mensagem: 'objeto já excluído. 💥' })
+        } else
+          res.status(202).send({
+            mensagem: 'Objeto removido com sucesso! ❌'
+          })
       }
     )
   })
