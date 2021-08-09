@@ -61,7 +61,7 @@ Ao iniciar a aplicação ela estara disponível na porta **3000**. Você pode ac
 ## Criando uma conta
 
 Para criar sua conta tenha criado no banco de dados tabela usuários com seguintes campos, id_usuario incrementação automática e key primary, email varchar(100) 
-e ative como campo único, o próprio bd será responsável de validar isso., senha varchar(100) e ambos não pode ser null.
+e ative como campo único, o próprio bd será responsável de validar isso, senha varchar(100) e ambos não pode ser null.
 na rota **[/cadastro] (http://localhost:3000/usuarios)**
 ```js
 {
@@ -105,7 +105,7 @@ exibindo o token pega esse token e insira no auth modo Bearer Token, lembrando c
 ```
 
 ## Rotas com autenticação são, **POST, DELETE, PATCH** rota get deixei pública. 
-
+Agora com esse token, implementa ele no componente auth do insomina no modo Bearer Token.
 
 ## Estado
 
