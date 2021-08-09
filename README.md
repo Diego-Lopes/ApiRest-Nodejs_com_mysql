@@ -99,13 +99,14 @@ resposta da api será
 ```js
 {
   "mensagem": "Autenticado com sucesso 🔓",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo4LCJlbWFpbCI6ImVtYWlsdGVzdGUxMkB0ZXN0ZTYuY29tIiwiaWF0IjoxNjI4NDYzNjk4LCJleHAiOjE2Mjg0NjcyOTh9.Ylpc7rBOjrKlSYDl66c31rlus3pDSQfCcgfIaJDtZvc"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo4LCJlbWFpbCI6ImVtYWlsdGVzdGUxMkB0ZXN0ZTYuY2
+  9tIiwiaWF0IjoxNjI4NDYzNjk4LCJleHAiOjE2Mjg0NjcyOTh9.Ylpc7rBOjrKlSYDl66c31rlus3pDSQfCcgfIaJDtZvc"
 }
 exibindo o token pega esse token e insira no auth modo Bearer Token, lembrando configurei o token para 1h de duração você pode mudar ao tempo que quiser no arquivo usuários const token.
 ```
 
 ## Rotas com autenticação são, **POST, DELETE, PATCH** rota get deixei pública. 
-Agora com esse token, implementa ele no componente auth do insomina no modo Bearer Token.
+Agora essas rotas só terão acesso com autenticação token, reforçando implemente no componente auth do insomina no modo Bearer Token.
 
 ## Estado
 
