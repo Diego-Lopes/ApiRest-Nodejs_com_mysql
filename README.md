@@ -72,7 +72,7 @@ na rota **[/cadastro] (http://localhost:3000/usuarios)**
 o retorno será 
 ```js
 {
-  "mensagem": "Usuario cadastrado com secesso",
+  "mensagem": "Usuario cadastrado com sucesso",
   "usuarioCriado": {
     "id_usuario": 8,
     "email": "emailteste12@teste6.com"
@@ -87,7 +87,7 @@ caso force cadastrar novamente receberá essa mensagem.
 ```
 
 ## Fazendo Login 
-Para fazer o login vá na rota **[/login](http://localhost:3000/usuarios)** faça o login preenchendo os campos email e senha
+Para fazer o login vá na rota **[/login] (http://localhost:3000/usuarios)** faça o login preenchendo os campos email e senha
 
 ```js
 {
