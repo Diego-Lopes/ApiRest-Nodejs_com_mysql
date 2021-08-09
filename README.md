@@ -102,7 +102,8 @@ resposta da api será
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo4LCJlbWFpbCI6ImVtYWlsdGVzdGUxMkB0ZXN0ZTYuY2
   9tIiwiaWF0IjoxNjI4NDYzNjk4LCJleHAiOjE2Mjg0NjcyOTh9.Ylpc7rBOjrKlSYDl66c31rlus3pDSQfCcgfIaJDtZvc"
 }
-exibindo o token pega esse token e insira no auth modo Bearer Token, lembrando configurei o token para 1h de duração você pode mudar ao tempo que quiser no arquivo usuários const token.
+exibindo o token pega esse token e insira no auth modo Bearer Token, 
+lembrando configurei o token para 1h de duração você pode mudar ao tempo que quiser no arquivo usuários const token.
 ```
 
 ## Rotas com autenticação são, **POST, DELETE, PATCH** rota get deixei pública. 
