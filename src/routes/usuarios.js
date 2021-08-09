@@ -34,7 +34,7 @@ router.post('/cadastro', (req, res, next) => {
                   return res.status(500).send({ error: error })
                 }
                 response = {
-                  mensagem: 'Usuario cadastrado com secesso',
+                  mensagem: 'Usuario cadastrado com sucesso 🎉',
                   usuarioCriado: {
                     id_usuario: results.insertId,
                     email: req.body.email
